@@ -1,6 +1,6 @@
 import React,  {useEffect, useState}  from 'react';
 
-export const AddNewBook = () => {
+export const SearchMovie = () => {
 	const [inputText, setInputText] = useState({
 		inputValue:''
 	  });
@@ -25,7 +25,7 @@ export const AddNewBook = () => {
 return (
 	<div>
 	<input type='number' name='addNewItem' onChange={onChangeInput} />
-	<button >Добавить новую книгу</button>
+	<button >Поиск</button>
 </div>
 );
 
