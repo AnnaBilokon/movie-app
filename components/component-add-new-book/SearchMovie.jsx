@@ -13,7 +13,7 @@ export const SearchMovie = ({
 	 const onChangeInput = (e) => {
 		console.log(e.target.value);
 		filterInpHandler(e.target.value);
-		// setInputText({inputValue: e.target.value});
+		setInputText({inputValue: e.target.value});
 	};
 	console.log(inputValue);
 

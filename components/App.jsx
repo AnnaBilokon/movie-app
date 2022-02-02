@@ -25,9 +25,10 @@ export const App = () => {
 				const allMovies = data.results;
 			  setMovie(allMovies);
 			  console.log(data.results);
+			const genre_name = data.genres[0].name;
+			  console.log('genre', genre_name);
 			  
 			});
-			console.log('2',paginationValue);
 		  return () => {};
 		},[paginationValue]);
 
@@ -36,22 +37,25 @@ export const App = () => {
 		  });
 
 		  const {filterStr} = filterObj;
+		  const {title} = movies;
+
 		  const filterInpHandler = (filterStr) => {
 			setFilterObj({
 			  filterStr: filterStr
 			});
 		  };
 
-		  const filterNameByText = (allMovies, filterStr) => {
+		  const filterNameByText = (title, filterStr) => {
 			if (filterStr === '') {
-			  return allMovies;
+			  return movies;
 			  
 			}
-			return allMovies.filter(({title}) =>
+			return movies.filter(({title}) =>
 			  title.toLowerCase().includes(filterStr.toLowerCase())
 			);
 		  };
-		
+
+		  const filteredMovies = filterNameByText(title, filterStr);
 //   const {arr} = movie;
 //   if (!arr) {
 //     return (
@@ -60,13 +64,8 @@ export const App = () => {
 //       </div>
 //     );
 //   }
-// const [paginationValue, setPaginationValue] = useState();
-// const onChangePagination = (current) => {
-//     console.log(current);
-//     setPaginationValue(current);
-//   };
 
-const {title, poster_path, overview, genre_ids, vote_average, id} = movies;
+const {poster_path, overview, genre_ids, vote_average, id} = movies;
 return (
     <> 
 	<div className={styles.searchField}>
@@ -79,7 +78,7 @@ return (
 
       {/* <Route exact path={'/movie'} component={OneMovie}></Route> */}
 	  <div className={styles.boxItems}> 
-         {movies.length > 0 && movies.map(movie => (
+         {filteredMovies.length > 0 && filteredMovies.map(movie => (
              <Movie data={movie} key={movie.id} {...movie} />
           ))}
 	 </div>
@@ -97,7 +96,7 @@ return (
 	 total={80} 
 	 pageSize={10} />
 	</div>
-
+	<OneMovie movies={movies} id={id}/>
     </>
   );
 

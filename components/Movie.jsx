@@ -1,74 +1,86 @@
 import React,  {useEffect, useState}  from 'react';
-import {HashRouter, Switch, Route, NavLink, useParams} from 'react-router-dom';
-import {BrowserRouter} from 'react-router-dom/cjs/react-router-dom.min';
+import {HashRouter, Switch, Route, NavLink, useParams,BrowserRouter} from 'react-router-dom';
 import styles from '/components/styles.scss';
 const MOVIES_IMAGE = 'https://image.tmdb.org/t/p/w300';
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
+
+const label = {inputProps: {'aria-label': 'Checkbox demo'}};
 
 export const pathes = {
 	main: '/',
 	movie: '/movie'
   };
 
-export const Movie = ({title, poster_path, overview, genre_ids,  vote_average, id}) => 
+export const Movie = ({title, poster_path, overview, genre_ids, vote_average, id}) => {
 
-	 (
+		const [selectValue, setelectValue] = useState();
+	
+		const checkedBox = (e) => {
+			console.log(e.target.checked);
+			setelectValue(e.target.checked);
+		};
+
+	 return (
+
     <div className={styles.moviePicture}>
 <BrowserRouter>
 
-<NavLink to={`${pathes.movie}/${id}`}> <img src={MOVIES_IMAGE + poster_path} alt={title}/> </NavLink>
+<NavLink to={`${pathes.movie}/${id}`} > 
+<div className={styles.overPic}>
+<img  src={MOVIES_IMAGE + poster_path} alt={title}/> 
+</div>
+</NavLink>
 
 </BrowserRouter>
-
-      <div>
-        {/* <h2 className={styles.boxItems}>{title}</h2> */}
-        {/* <h2>Overview</h2> */}
-		<p>{id}</p>
-        {/* <p>{genre_ids}</p> */}
+{/* <OneMovie id={id}/> */}
+      <div className={styles.blockHeart} >
+        {/* <className={styles.boxItems}>{title} */}
+        {/* Overview */}
+		<p ><Checkbox value={selectValue} onChange={checkedBox} {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} color={'warning'}/> 
+		 {genre_ids}</p>
       </div>
     </div>
 	)
 ; 
-// export const Links = () => (
-// 	<div>
-// 	<HashRouter>
-// 	{/* <Nav/> */}
-//     <Switch>
-// 	<Route exact path={'/'} component={App}></Route>
-//       <Route path={'/movie'} component={OneMovie}></Route>
-//     </Switch>
-//   </HashRouter>
-// 	</div>
-  
-// 	);
+	 };
+
 export const OneMovie = () => {
-	const {id} = useParams();
-	console.log(id);
-	const [movies, setMovie] = useState([]);
+const params = useParams();
+// const movieId = params.id;
+console.log(params);
+	const [oneMovie, setOneMovie] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=9b47375a58b820da3e1293213c50ac24&language=en-US`)
+		fetch(`https://api.themoviedb.org/3/movie/${params}?api_key=9b47375a58b820da3e1293213c50ac24&language=en-US`)
 		  .then((res) => res.json())
 		  .then((data) => {
-			setMovie(data);
+			setOneMovie(data);
 			console.log(data);
-			const genre_name = data.genres[0].name;
-			const genre_name2 = data.genres[1].name;
-			console.log(genre_name); // 438695
+			// const genre_name = data.genres_ids[0].name;
+			// const genre_name2 = data.genres[1].name;
+			// console.log(genre_name); // 438695
 			
 		  });
 
 		return () => {};
 	  },[]);
+	
+	  const {title, poster_path, overview, genre_ids, vote_average, genre_name} = oneMovie;
 
-	  const {title, poster_path, overview, genre_ids, vote_average} = movies;
 	return (
 		<div className={styles.oneMoviePicture}>
-		   <img src={MOVIES_IMAGE + poster_path} alt={title}/>
+			
+			{/* {id} */}
+		  <p> 
+		  <img src={MOVIES_IMAGE + poster_path} alt={title}/>
+		  </p>
 		  <div>
 			<p>{title}</p>
 			<p className={styles.overview}>{overview}</p>
 			<p>Оценка:{vote_average}</p>
-			<p>{genre_ids}</p>
+			<p>{genre_name}</p>
 		  </div>
 		</div>
 	);
