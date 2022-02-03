@@ -10,6 +10,7 @@ import {OneMovie} from '../components/Movie';
 ReactDOM.render(
 	// <Provider>
     <Links/>,
+	// <OneMovie/>,
 	// </Provider>,
 
     document.getElementById('app')

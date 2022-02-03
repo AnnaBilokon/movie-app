@@ -96,7 +96,7 @@ return (
 	 total={80} 
 	 pageSize={10} />
 	</div>
-	<OneMovie movies={movies} id={id}/>
+	{/* <OneMovie movies={movies} id={id}/> */}
     </>
   );
 
@@ -109,12 +109,20 @@ export const pathes = {
 
 export const Links = () => (
 	<div>
+		
 	<HashRouter>
     <Switch>
 	<Route exact path={'/'} component={App}></Route>
-	<Route exact path={`${pathes.movie}/:id`} component={OneMovie}></Route>
+	<Route path={`${pathes.movie}`} component={OneMovie}></Route>
     </Switch>
   </HashRouter>
 	</div>
   
 	);
+	
+	// export const Test= () => (
+	// 	<div>
+	// 		Test Component
+	// 	</div>
+	// );
+	

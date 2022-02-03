@@ -27,33 +27,33 @@ export const Movie = ({title, poster_path, overview, genre_ids, vote_average, id
     <div className={styles.moviePicture}>
 <BrowserRouter>
 
-<NavLink to={`${pathes.movie}/${id}`} > 
+<NavLink to={`${pathes.movie}`} > 
 <div className={styles.overPic}>
 <img  src={MOVIES_IMAGE + poster_path} alt={title}/> 
 </div>
 </NavLink>
 
 </BrowserRouter>
-{/* <OneMovie id={id}/> */}
       <div className={styles.blockHeart} >
-        {/* <className={styles.boxItems}>{title} */}
         {/* Overview */}
 		<p ><Checkbox value={selectValue} onChange={checkedBox} {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} color={'warning'}/> 
 		 {genre_ids}</p>
       </div>
+	  
     </div>
 	)
 ; 
 	 };
 
-export const OneMovie = () => {
-const params = useParams();
+export const OneMovie = ({id}) => {
+
+// const {params} = useParams();
 // const movieId = params.id;
-console.log(params);
+console.log('id',id);
 	const [oneMovie, setOneMovie] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://api.themoviedb.org/3/movie/${params}?api_key=9b47375a58b820da3e1293213c50ac24&language=en-US`)
+		fetch('https://api.themoviedb.org/3/movie/585083?api_key=9b47375a58b820da3e1293213c50ac24&language=en-U')
 		  .then((res) => res.json())
 		  .then((data) => {
 			setOneMovie(data);
