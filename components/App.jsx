@@ -90,7 +90,7 @@ return (
 	 total={80} 
 	 pageSize={10} />
 	</div>
-	<OneMovie movies={movies} id={id}/>
+	{/* <OneMovie movies={movies} id={id}/> */}
     </>
   );
 
