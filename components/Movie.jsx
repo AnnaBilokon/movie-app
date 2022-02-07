@@ -1,7 +1,7 @@
 import React,  {useEffect, useState}  from 'react';
 import {HashRouter, Switch, Route, NavLink, useParams,BrowserRouter} from 'react-router-dom';
 import styles from '/components/styles.scss';
-const MOVIES_IMAGE = 'https://image.tmdb.org/t/p/w300';
+const img_movie = 'https://image.tmdb.org/t/p/w300';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
@@ -26,15 +26,15 @@ export const Movie = ({title, poster_path, overview, genre_ids, vote_average, id
 
     <div className={styles.moviePicture}>
 <BrowserRouter>
-
-<NavLink to={`${pathes.movie}`} > 
+<NavLink to={`${pathes.movie}/${id}`} > 
 <div className={styles.overPic}>
-<img  src={MOVIES_IMAGE + poster_path} alt={title}/> 
+<img  src={img_movie + poster_path} alt={title}/> 
 </div>
 </NavLink>
 
 </BrowserRouter>
       <div className={styles.blockHeart} >
+
         {/* Overview */}
 		<p ><Checkbox value={selectValue} onChange={checkedBox} {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} color={'warning'}/> 
 		 {genre_ids}</p>
@@ -46,7 +46,6 @@ export const Movie = ({title, poster_path, overview, genre_ids, vote_average, id
 	 };
 
 export const OneMovie = ({id}) => {
-
 // const {params} = useParams();
 // const movieId = params.id;
 console.log('id',id);
@@ -74,7 +73,7 @@ console.log('id',id);
 			
 			{/* {id} */}
 		  <p> 
-		  <img src={MOVIES_IMAGE + poster_path} alt={title}/>
+		  <img src={img_movie + poster_path} alt={title}/>
 		  </p>
 		  <div>
 			<p>{title}</p>

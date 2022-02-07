@@ -83,12 +83,6 @@ return (
           ))}
 	 </div>
 
-	{/* <div>
-	
-     <OneMovie movies={movies} />
-    
-		</div>	 */}
-
 	<div className={styles.pagination}>
 	<Pagination  
 	defaultCurrent={1} 
@@ -96,7 +90,7 @@ return (
 	 total={80} 
 	 pageSize={10} />
 	</div>
-	{/* <OneMovie movies={movies} id={id}/> */}
+	<OneMovie movies={movies} id={id}/>
     </>
   );
 
@@ -113,7 +107,8 @@ export const Links = () => (
 	<HashRouter>
     <Switch>
 	<Route exact path={'/'} component={App}></Route>
-	<Route path={`${pathes.movie}`} component={OneMovie}></Route>
+	<Route path={`${pathes.movie}/:id`} component={OneMovie}></Route>
+
     </Switch>
   </HashRouter>
 	</div>
