@@ -62,6 +62,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = (env, options) => {
     const isProd = options.mode === 'production';
 
+	const publicPath = !isProd
+	? '/'
+	: './';
+
     const conf = {
         entry: {
             main: path.resolve(__dirname, './src/index.js'),
@@ -70,6 +74,7 @@ module.exports = (env, options) => {
             extensions: ['*', '.js', '.jsx'],
         },
         output: {
+			publicPath,
             path: path.resolve(__dirname, './dist'),
             filename: '[name].bundle.js',
             clean: true,
@@ -108,7 +113,7 @@ module.exports = (env, options) => {
                 title: 'webpack Boilerplate',
                 template: path.resolve(__dirname, './src/template.html'), // шаблон
                 filename: 'index.html', // название выходного файла,
-				base: '/' 
+				base: publicPath
             }),
             new webpack.SourceMapDevToolPlugin({
                 filename: '[file].map',
