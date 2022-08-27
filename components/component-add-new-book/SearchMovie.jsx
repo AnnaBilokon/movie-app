@@ -16,17 +16,6 @@ export const SearchMovie = ({
 		setInputText({inputValue: e.target.value});
 	};
 	console.log(inputValue);
-
-	// const onSubmit = e => {
-	// 	const {inputValue} = inputText;
-	// 	e.preventDefault();
-	// 	console.log(inputValue);
-	// };
-	//   const addNewItem = (value) => {
-	
-	// console.log('e.target.value',e.target.value);
-	
-	//   };
 	
 return (
 	<div className={styles.searchField}> 

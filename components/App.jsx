@@ -73,9 +73,9 @@ return (
 	filterStr={filterStr} 
 	filterNameByText={filterNameByText}
 	filterInpHandler={filterInpHandler}/>
-	<NavLink to={`${pathes.favorites}`} ><button className={styles.favoritesBtn}>
+	{/* <NavLink to={`${pathes.favorites}`} ><button className={styles.favoritesBtn}>
 		Избранное
-	</button>  </NavLink>
+	</button>  </NavLink> */}
 	</div>
 {/* <div>
 	{movies.map((genre) => {

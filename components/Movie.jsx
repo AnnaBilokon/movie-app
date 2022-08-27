@@ -105,7 +105,7 @@ export const Links = () => (
 		<Switch>
 		<Route exact path={'/'} component={App}></Route>
 		<Route path={`${pathes.movie}/:id`} component={OneMovie}></Route>
-		<Route path={`${pathes.favorites}`} component={Favorites}></Route>
+		{/* <Route path={`${pathes.favorites}`} component={Favorites}></Route> */}
 		</Switch>
 	  </HashRouter>
 		</div>
