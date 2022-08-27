@@ -152,9 +152,9 @@ const movieId = params.id;
 		  <img src={img_movie + poster_path} alt={title}/>
 		  </p>
 		  <div>
-			<p>{title}</p>
+			<p className={styles.movieTitle}>{title}</p>
 			<p className={styles.overview}>{overview}</p>
-			<p>Оценка:{vote_average}</p>
+			<p>Range:{vote_average}</p>
 			<p><Checkbox value={selectValue} onChange={checkedBox} {...label} 
 icon={<FavoriteBorder />} 
 checkedIcon={<Favorite />} color={'warning'}/> 
