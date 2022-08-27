@@ -3,26 +3,6 @@ import styles from '/components/styles.scss';
 const img_movie = 'https://image.tmdb.org/t/p/w300';
 import {Movie} from './Movie.jsx';
 
-// export const ListFavorites = () => (
-
-// <div className={styles.moviePicture}>
-// <div className={styles.boxItems}> 
-	 
-// 	 {filteredMovies.length > 0 && filteredMovies.map(movie => (
-// 		<Favorites data={movie} key={movie.id} {...movie} /> 
-// 	  ))}
- 
-//  </div>
-// <div className={styles.overPic}>
-// <img src={img_movie + poster_path} className={styles.imgHover} alt={title}/> 
-// </div>
-//       <div className={styles.blockHeart} >
-//         {/* Overview */}
-//       </div>
-	  
-//     </div>
-// 	);
-
 export const Favorites = () => {
 
 	let arrLocalStorige = [];
