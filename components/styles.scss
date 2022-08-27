@@ -18,14 +18,14 @@ position: relative;
 	line-height: 0;
  }
 
-img:hover {
+ .imgHover:hover {
 	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
 	opacity: .1;
 	transition: 0.5s;
 }
 .blockHeart{
 	width: 100%;
-	height: 20%;
+	height: 30%;
 	position:absolute;
 	left:0;
 	bottom:0;
@@ -65,16 +65,61 @@ img:hover {
 }
 .oneMoviePicture {
 	display: flex;
-	// flex-direction: column;
+	background-color: rgb(199, 184, 131);
+	position: absolute;
+	height:100%;
+	width: 100%;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding: 20px;
-	background-color: cornsilk;
 
 	}
 .overview {
 	width: 300px;
 	padding: 10px;
 	font-size: 16px;
+}
+// .oneMovieBg {
+// 	background:rgb(145, 101, 35);
+// }
+.favoritesBtn {
+	width: 100px;
+	display: flex;
+	position: absolute;
+	right: 50px;
+	justify-content: flex-end;
+	border-radius: 3px;
+	border: 1px solid rgba(235, 215, 40, 0.904);
+	background-color: rgba(235, 215, 40, 0.904);
+	padding-left: 5px;
+	font-size: 16px;
+	color: black;
+}
+.genres {
+display: flex;
+position: absolute;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: center;
+line-height: 8px;
+right: 100px;
+top: 10px;
+margin: 0;
+padding-bottom: 3px;
+font-size: 16px;
+font-weight: bold;
+}
+
+.backBtn {
+	display: flex;
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	background-color: rgb(20, 19, 14);
+	text-align: center;
+	color: blanchedalmond;
+	width: 90px;
+	border-radius: 3px;
+	border: 1px solid rgb(20, 19, 14) ;
+
 }

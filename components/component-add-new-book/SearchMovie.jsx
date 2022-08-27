@@ -29,7 +29,7 @@ export const SearchMovie = ({
 	//   };
 	
 return (
-	<div className={styles.searchField}>
+	<div className={styles.searchField}> 
 	<input className={styles.inputField} value={filterStr} type='text' name='addNewItem' 
 	onChange={onChangeInput} />
 	<button className={styles.searchBtn}>Поиск</button>

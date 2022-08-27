@@ -1,12 +1,11 @@
 import React,  {useEffect, useState}  from 'react';
 import {BrowserRouter, Switch, Route, NavLink, HashRouter} from 'react-router-dom';
-import {Movie, OneMovie} from './Movie.jsx';
+import {Movie, OneMovie, pathes} from './Movie.jsx';
 import {Pagination} from 'antd';
 import 'antd/dist/antd.css';
-
+import {Favorites} from './Favorites.jsx';
 import styles from '/components/styles.scss';
 import {SearchMovie} from './component-add-new-book/SearchMovie.jsx';
-import Item from 'antd/lib/list/Item';
 
 export const App = () => {
 
@@ -25,8 +24,8 @@ export const App = () => {
 				const allMovies = data.results;
 			  setMovie(allMovies);
 			  console.log(data.results);
-			const genre_name = data.genres[0].name;
-			  console.log('genre', genre_name);
+			//   const genreOfOneMovie = allMovies.genre_ids;
+			//   console.log('genreOfOneMovie',genreOfOneMovie);
 			  
 			});
 		  return () => {};
@@ -65,22 +64,37 @@ export const App = () => {
 //     );
 //   }
 
-const {poster_path, overview, genre_ids, vote_average, id} = movies;
+const {poster_path, overview, genre_ids, vote_average, id,genre_name} = movies;
+
 return (
     <> 
 	<div className={styles.searchField}>
-		
 	<SearchMovie movies={movies} 
 	filterStr={filterStr} 
 	filterNameByText={filterNameByText}
 	filterInpHandler={filterInpHandler}/>
+	<NavLink to={`${pathes.favorites}`} ><button className={styles.favoritesBtn}>
+		Избранное
+	</button>  </NavLink>
 	</div>
-
+{/* <div>
+	{movies.map((genre) => {
+		const genre_name = movies.genres[0].name;
+return(
+			{genre_name}
+	);
+	}
+		)
+	}
+</div> */}
       {/* <Route exact path={'/movie'} component={OneMovie}></Route> */}
+	  
 	  <div className={styles.boxItems}> 
+	 
          {filteredMovies.length > 0 && filteredMovies.map(movie => (
-             <Movie data={movie} key={movie.id} {...movie} />
+            <Movie data={movie} key={movie.id} {...movie} /> 
           ))}
+	
 	 </div>
 
 	<div className={styles.pagination}>
@@ -90,34 +104,7 @@ return (
 	 total={80} 
 	 pageSize={10} />
 	</div>
-	{/* <OneMovie movies={movies} id={id}/> */}
     </>
   );
 
 };
-
-export const pathes = {
-	main: '/',
-	movie: '/movie'
-  };
-
-export const Links = () => (
-	<div>
-		
-	<HashRouter>
-    <Switch>
-	<Route exact path={'/'} component={App}></Route>
-	<Route path={`${pathes.movie}/:id`} component={OneMovie}></Route>
-
-    </Switch>
-  </HashRouter>
-	</div>
-  
-	);
-	
-	// export const Test= () => (
-	// 	<div>
-	// 		Test Component
-	// 	</div>
-	// );
-	
